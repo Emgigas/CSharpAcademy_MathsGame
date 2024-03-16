@@ -1,9 +1,15 @@
-﻿Console.Write("Please enter your name: ");
-
-string? name = Console.ReadLine();
+﻿string name = GetName();
 DateTime date = DateTime.UtcNow;
 
 Menu(name, date);
+
+string GetName()
+{
+    Console.Write("Please enter your name: ");
+
+    name = Console.ReadLine();
+    return name;
+}
 
 void Menu(string? name, DateTime date)
 {
