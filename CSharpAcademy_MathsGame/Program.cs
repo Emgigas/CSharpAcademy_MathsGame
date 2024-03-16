@@ -1,7 +1,7 @@
 ﻿string name = GetName();
 DateTime date = DateTime.UtcNow;
 
-Menu(name, date);
+Menu(name);
 
 string GetName()
 {
@@ -11,7 +11,7 @@ string GetName()
     return name;
 }
 
-void Menu(string? name, DateTime date)
+void Menu(string? name)
 {
     Console.WriteLine("============================================================================================");
     Console.WriteLine($"Hello {name}. It's {date}. This is the CSharpAcademy Maths game challenge.");
@@ -42,21 +42,141 @@ void Menu(string? name, DateTime date)
 void AdditionGame()
 {
     Console.WriteLine("Addition game selected");
+
+    Random random = new Random();
+
+    int firstNumber;
+    int secondNumber;
+    int score = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
+        
+        Console.Write($"\n{firstNumber} + {secondNumber} = ");
+        var result = Console.ReadLine();
+
+        int parseResult;
+
+        bool checkResult = int.TryParse(result, out parseResult);
+        if (checkResult)
+        {
+            if (parseResult == firstNumber + secondNumber)
+            {
+                Console.WriteLine("Your answer was correct!");
+                score++;
+            }
+            else Console.WriteLine($"Incorrect answer. The correct answer was {firstNumber + secondNumber}.");
+        }
+        else Console.WriteLine("Your answer was not a valid number.");
+    }
+    Console.WriteLine($"\nGame over. Your final score was: {score}");
 }
 
 void SubtractionGame()
 {
     Console.WriteLine("Subtraction game selected");
+    Random random = new Random();
+
+    int firstNumber;
+    int secondNumber;
+    int score = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
+        
+        Console.Write($"\n{firstNumber} - {secondNumber} = ");
+        var result = Console.ReadLine();
+
+        int parseResult;
+
+        bool checkResult = int.TryParse(result, out parseResult);
+        if (checkResult)
+        {
+            if (parseResult == firstNumber - secondNumber)
+            {
+                Console.WriteLine("Your answer was correct!");
+                score++;
+            }
+            else Console.WriteLine($"Incorrect answer. The correct answer was {firstNumber + secondNumber}.");
+        }
+        else Console.WriteLine("Your answer was not a valid number.");
+    }
+    Console.WriteLine($"\nGame over. Your final score was: {score}");
 }
 
 void MultiplicationGame()
 {
     Console.WriteLine("Multiplication game selected");
+    Random random = new Random();
+
+    int firstNumber;
+    int secondNumber;
+    int score = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
+        
+        Console.Write($"\n{firstNumber} * {secondNumber} = ");
+        var result = Console.ReadLine();
+
+        int parseResult;
+
+        bool checkResult = int.TryParse(result, out parseResult);
+        if (checkResult)
+        {
+            if (parseResult == firstNumber * secondNumber)
+            {
+                Console.WriteLine("Your answer was correct!");
+                score++;
+            }
+            else Console.WriteLine($"Incorrect answer. The correct answer was {firstNumber + secondNumber}.");
+        }
+        else Console.WriteLine("Your answer was not a valid number.");
+    }
+
+    Console.WriteLine($"\nGame over. Your final score was: {score}");
 }
 
 void DivisionGame()
 {
     Console.WriteLine("Division game selected");
+    
+    Random random = new Random();
+
+    int firstNumber;
+    int secondNumber;
+    int score = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
+        
+        Console.Write($"\n{firstNumber} / {secondNumber} = ");
+        var result = Console.ReadLine();
+
+        int parseResult;
+
+        bool checkResult = int.TryParse(result, out parseResult);
+        if (checkResult)
+        {
+            if (parseResult == firstNumber / secondNumber)
+            {
+                Console.WriteLine("Your answer was correct!");
+                score++;
+            }
+            else Console.WriteLine($"Incorrect answer. The correct answer was {firstNumber + secondNumber}.");
+        }
+        else Console.WriteLine("Your answer was not a valid number.");
+    }
+
+    Console.WriteLine($"\nGame over. Your final score was: {score}");
 }
 
 void QuitGame()
