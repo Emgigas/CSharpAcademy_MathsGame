@@ -16,15 +16,37 @@ Console.WriteLine(linebreak);
 
 string? gameSelected = Console.ReadLine();
 
-string? response = gameSelected.Trim().ToLower() switch
+switch (gameSelected?.Trim().ToLower())
 {
-    "a" => "Addition game selected",
-    "s" => "Subtraction game selected",
-    "m" => "Multiplication game selected",
-    "d" => "Division game selected",
-    "q" => "Game has ended",
-    _ => "Incorrect response given",
-};
+    case "a": AdditionGame(); break;
+    case "s": SubtractionGame(); break;
+    case "m": MultiplicationGame(); break;
+    case "d": DivisionGame(); break;
+    case "q": QuitGame(); break;
+    default: Console.WriteLine("Invalid response"); break;
+}
 
-Console.WriteLine(response);
+void AdditionGame()
+{
+    Console.WriteLine("Addition game selected");
+}
 
+void SubtractionGame()
+{
+    Console.WriteLine("Subtraction game selected");
+}
+
+void MultiplicationGame()
+{
+    Console.WriteLine("Multiplication game selected");
+}
+
+void DivisionGame()
+{
+    Console.WriteLine("Division game selected");
+}
+
+void QuitGame()
+{
+    Console.WriteLine("Game has ended");
+}
