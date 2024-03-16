@@ -2,28 +2,35 @@
 
 string? name = Console.ReadLine();
 DateTime date = DateTime.UtcNow;
-string linebreak = "============================================================================================";
 
-Console.WriteLine(linebreak);
-Console.WriteLine($"Hello {name}. It's {date}. This is the CSharpAcademy Maths game challenge.");
-Console.WriteLine($@"Which game would you like to play. Select from the options below:
-A - Addition
-S - Subtraction
-M - Multiplication
-D - Division
-Q - Quit the program");
-Console.WriteLine(linebreak);
+Menu(name, date);
 
-string? gameSelected = Console.ReadLine();
-
-switch (gameSelected?.Trim().ToLower())
+void Menu(string? name, DateTime date)
 {
-    case "a": AdditionGame(); break;
-    case "s": SubtractionGame(); break;
-    case "m": MultiplicationGame(); break;
-    case "d": DivisionGame(); break;
-    case "q": QuitGame(); break;
-    default: Console.WriteLine("Invalid response"); break;
+    Console.WriteLine("============================================================================================");
+    Console.WriteLine($"Hello {name}. It's {date}. This is the CSharpAcademy Maths game challenge.");
+    Console.WriteLine($"""
+                       Which game would you like to play. Select from the options below:
+                       A - Addition
+                       S - Subtraction
+                       M - Multiplication
+                       D - Division
+                       Q - Quit the program
+                       """);
+    Console.WriteLine("============================================================================================");
+
+    string? gameSelected = Console.ReadLine();
+
+    switch (gameSelected?.Trim().ToLower())
+    {
+        case "a": AdditionGame(); break;
+        case "s": SubtractionGame(); break;
+        case "m": MultiplicationGame(); break;
+        case "d": DivisionGame(); break;
+        case "q": QuitGame(); break;
+        default: Console.WriteLine("Invalid response"); Environment.Exit(1);
+            break;
+    }
 }
 
 void AdditionGame()
@@ -49,4 +56,5 @@ void DivisionGame()
 void QuitGame()
 {
     Console.WriteLine("Game has ended");
+    Environment.Exit(1);
 }
