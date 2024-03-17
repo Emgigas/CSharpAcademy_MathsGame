@@ -13,42 +13,63 @@ string GetName()
 
 void Menu(string? name)
 {
+    bool isGameOn = true;
+
     Console.WriteLine("============================================================================================");
     Console.WriteLine($"Hello {name}. It's {date}. This is the CSharpAcademy Maths game challenge.");
-    Console.WriteLine($"""
-                       Which game would you like to play. Select from the options below:
-                       A - Addition
-                       S - Subtraction
-                       M - Multiplication
-                       D - Division
-                       Q - Quit the program
-                       """);
-    Console.WriteLine("============================================================================================");
 
-    string? gameSelected = Console.ReadLine();
-
-    switch (gameSelected?.Trim().ToLower())
+    do
     {
-        case "a": AdditionGame(); break;
-        case "s": SubtractionGame(); break;
-        case "m": MultiplicationGame(); break;
-        case "d": DivisionGame(); break;
-        case "q": QuitGame(); break;
-        default: Console.WriteLine("Invalid response"); Environment.Exit(1);
-            break;
-    }
+        Console.WriteLine($"""
+                           Which game would you like to play. Select from the options below:
+                           A - Addition
+                           S - Subtraction
+                           M - Multiplication
+                           D - Division
+                           Q - Quit the program
+                           """);
+        Console.WriteLine(
+            "============================================================================================");
+
+        string? gameSelected = Console.ReadLine();
+
+        switch (gameSelected?.Trim().ToLower())
+        {
+            case "a":
+                AdditionGame();
+                break;
+            case "s":
+                SubtractionGame();
+                break;
+            case "m":
+                MultiplicationGame();
+                break;
+            case "d":
+                DivisionGame();
+                break;
+            case "q":
+                Console.WriteLine("Game over. Goodbye.");
+                isGameOn = false;
+                break;
+            default:
+                Console.WriteLine("Invalid response");
+                Environment.Exit(1);
+                break;
+        }
+    } while (isGameOn);
 }
 
 void AdditionGame()
 {
-    Console.WriteLine("Addition game selected");
-
     Random random = new Random();
 
     int score = 0;
 
     for (int i = 0; i < 5; i++)
     {
+        Console.Clear();
+        Console.WriteLine("Addition game");
+        
         var firstNumber = random.Next(1, 9);
         var secondNumber = random.Next(1, 9);
         
@@ -66,19 +87,25 @@ void AdditionGame()
             else Console.WriteLine($"Incorrect answer. The correct answer was {firstNumber + secondNumber}.");
         }
         else Console.WriteLine("Your answer was not a valid number.");
+        
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
     }
+    Console.Clear();
     Console.WriteLine($"\nGame over. Your final score was: {score}");
 }
 
 void SubtractionGame()
 {
-    Console.WriteLine("Subtraction game selected");
     Random random = new Random();
 
     int score = 0;
 
     for (int i = 0; i < 5; i++)
     {
+        Console.Clear();
+        Console.WriteLine("Subtraction game");
+        
         var firstNumber = random.Next(1, 9);
         var secondNumber = random.Next(1, 9);
         
@@ -96,19 +123,25 @@ void SubtractionGame()
             else Console.WriteLine($"Incorrect answer. The correct answer was {firstNumber - secondNumber}.");
         }
         else Console.WriteLine("Your answer was not a valid number.");
+        
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
     }
+    Console.Clear();
     Console.WriteLine($"\nGame over. Your final score was: {score}");
 }
 
 void MultiplicationGame()
 {
-    Console.WriteLine("Multiplication game selected");
     Random random = new Random();
 
     int score = 0;
 
     for (int i = 0; i < 5; i++)
     {
+        Console.Clear();
+        Console.WriteLine("Multiplication game");
+        
         var firstNumber = random.Next(1, 9);
         var secondNumber = random.Next(1, 9);
         
@@ -126,21 +159,24 @@ void MultiplicationGame()
             else Console.WriteLine($"Incorrect answer. The correct answer was {firstNumber * secondNumber}.");
         }
         else Console.WriteLine("Your answer was not a valid number.");
+        
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
     }
-
+    Console.Clear();
     Console.WriteLine($"\nGame over. Your final score was: {score}");
 }
 
 void DivisionGame()
-{
-    Console.WriteLine("Division game selected");
-    
+{ 
     Random random = new Random();
-
     int score = 0;
 
     for (int i = 0; i < 5; i++)
     {
+        Console.Clear();
+        Console.WriteLine("Division game");
+        
         int[] divisionNumbers = GetDivisionNumbers();
         int firstNumber = divisionNumbers[0];
         int secondNumber = divisionNumbers[1];
@@ -159,8 +195,11 @@ void DivisionGame()
             else Console.WriteLine($"Incorrect answer. The correct answer was {firstNumber / secondNumber}.");
         }
         else Console.WriteLine("Your answer was not a valid number.");
+        
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
     }
-
+    Console.Clear();
     Console.WriteLine($"\nGame over. Your final score was: {score}");
 }
 
@@ -181,10 +220,4 @@ int[] GetDivisionNumbers()
     result[1] = secondNumber;
 
     return result;
-}
-
-void QuitGame()
-{
-    Console.WriteLine("Game has ended");
-    Environment.Exit(1);
 }
