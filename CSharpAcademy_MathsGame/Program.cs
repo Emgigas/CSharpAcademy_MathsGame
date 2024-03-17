@@ -1,9 +1,12 @@
-﻿string name = GetName();
+﻿string? name = GetName();
 DateTime date = DateTime.UtcNow;
+
+
+List<string> gameScores = new List<string>();
 
 Menu(name);
 
-string GetName()
+string? GetName()
 {
     Console.Write("Please enter your name: ");
 
@@ -26,6 +29,7 @@ void Menu(string? name)
                            S - Subtraction
                            M - Multiplication
                            D - Division
+                           V - View previous scores
                            Q - Quit the program
                            """);
         Console.WriteLine(
@@ -46,6 +50,9 @@ void Menu(string? name)
                 break;
             case "d":
                 DivisionGame();
+                break;
+            case "v":
+                ShowScores();
                 break;
             case "q":
                 Console.WriteLine("Game over. Goodbye.");
@@ -93,6 +100,8 @@ void AdditionGame()
     }
     Console.Clear();
     Console.WriteLine($"\nGame over. Your final score was: {score}");
+
+    gameScores.Add($"{DateTime.Now} - Addition: Score = {score}");
 }
 
 void SubtractionGame()
@@ -129,6 +138,8 @@ void SubtractionGame()
     }
     Console.Clear();
     Console.WriteLine($"\nGame over. Your final score was: {score}");
+    
+    gameScores.Add($"{DateTime.Now} - Subtraction: Score = {score}");
 }
 
 void MultiplicationGame()
@@ -165,11 +176,12 @@ void MultiplicationGame()
     }
     Console.Clear();
     Console.WriteLine($"\nGame over. Your final score was: {score}");
+    
+    gameScores.Add($"{DateTime.Now} - Multiplication: Score = {score}");
 }
 
 void DivisionGame()
-{ 
-    Random random = new Random();
+{
     int score = 0;
 
     for (int i = 0; i < 5; i++)
@@ -201,6 +213,8 @@ void DivisionGame()
     }
     Console.Clear();
     Console.WriteLine($"\nGame over. Your final score was: {score}");
+    
+    gameScores.Add($"{DateTime.Now} - Division: Score = {score}");
 }
 
 int[] GetDivisionNumbers()
@@ -220,4 +234,18 @@ int[] GetDivisionNumbers()
     result[1] = secondNumber;
 
     return result;
+}
+
+void ShowScores()
+{
+    Console.Clear();
+    Console.WriteLine("============================================================================================");
+    foreach (string score in gameScores)
+    {
+        Console.WriteLine(score);
+    }
+    Console.WriteLine("============================================================================================");
+    Console.WriteLine("Press any key to continue...");
+    Console.ReadKey();
+    Console.Clear();
 }
