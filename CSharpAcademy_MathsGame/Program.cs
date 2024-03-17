@@ -1,7 +1,5 @@
 ﻿string? name = GetName();
 DateTime date = DateTime.UtcNow;
-
-
 List<string> gameScores = new List<string>();
 
 Menu(name);
