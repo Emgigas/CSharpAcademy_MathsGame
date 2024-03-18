@@ -1,16 +1,18 @@
+using CSharpAcademy_MathsGame.Models;
+
 namespace CSharpAcademy_MathsGame;
 
 public class Helpers
 {
-    private static List<string> gameScores = new();
+    internal static List<Game> gameScores = new();
     
     internal static void ShowScores()
     {
         Console.Clear();
         Console.WriteLine("============================================================================================");
-        foreach (string score in gameScores)
+        foreach (var game in gameScores)
         {
-            Console.WriteLine(score);
+            Console.WriteLine($"{game.Date} - {game.Type}: Score = {game.Score}");
         }
         Console.WriteLine("============================================================================================");
         Console.WriteLine("Press any key to continue...");
@@ -39,6 +41,11 @@ public class Helpers
 
     internal static void CaptureScore(int gameScore, string gameType)
     {
-        gameScores.Add($"{DateTime.Now} - {gameType}: Score = {gameScore}");
+        gameScores.Add(new Game
+        {
+            Date = DateTime.Now,
+            Score = gameScore,
+            Type = gameType,
+        });
     }
 }
