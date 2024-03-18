@@ -39,7 +39,7 @@ public class Helpers
         return result;
     }
 
-    internal static void CaptureScore(int gameScore, string gameType)
+    internal static void CaptureScore(int gameScore, GameType gameType)
     {
         gameScores.Add(new Game
         {

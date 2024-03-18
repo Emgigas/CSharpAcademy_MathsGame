@@ -1,3 +1,5 @@
+using CSharpAcademy_MathsGame.Models;
+
 namespace CSharpAcademy_MathsGame;
 
 internal class GameEngine
@@ -39,7 +41,7 @@ internal class GameEngine
         Console.Clear();
         Console.WriteLine($"\nGame over. Your final score was: {score}");
 
-        Helpers.CaptureScore(score, "Addition");
+        Helpers.CaptureScore(score, GameType.Addition);
     }
 
     internal void SubtractionGame()
@@ -78,7 +80,7 @@ internal class GameEngine
         Console.Clear();
         Console.WriteLine($"\nGame over. Your final score was: {score}");
 
-        Helpers.CaptureScore(score, "Subtraction");
+        Helpers.CaptureScore(score, GameType.Subtraction);
     }
 
     internal void MultiplicationGame()
@@ -117,7 +119,7 @@ internal class GameEngine
         Console.Clear();
         Console.WriteLine($"\nGame over. Your final score was: {score}");
 
-        Helpers.CaptureScore(score, "Multiplication");
+        Helpers.CaptureScore(score,GameType.Multiplication);
     }
 
     internal void DivisionGame()
@@ -155,6 +157,6 @@ internal class GameEngine
         Console.Clear();
         Console.WriteLine($"\nGame over. Your final score was: {score}");
 
-        Helpers.CaptureScore(score, "Division");
+        Helpers.CaptureScore(score, GameType.Division);
     }
 }
