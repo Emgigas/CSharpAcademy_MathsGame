@@ -15,7 +15,6 @@ string? GetName()
 }
 
 // https://www.youtube.com/watch?v=_T7896oRq3Q&list=PL4G0MUH8YWiD1p5ySamqNWAaWlnwp1Vip&index=21
-// TODO: Validate user inputs
 // TODO: Add in difficulty levels
 // TODO: Add in round timers
 // TODO: Add timer results to ShowScores
